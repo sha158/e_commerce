@@ -1,5 +1,5 @@
 import 'package:e_commerce/Utils/products_json.dart';
-import 'package:e_commerce/secon_screen.dart';
+import 'package:e_commerce/screens/secon_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -7,16 +7,12 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.green
-        
-        
-        ,
       ),
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
@@ -25,7 +21,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +30,13 @@ class MyHomePage extends StatelessWidget {
         child: ListView.builder(
           itemCount: result.length,
           itemBuilder: (context, index) {
+            // condition to extract the categories from the local json
             return (result[index]["p_category"] == null)
                 ? Container()
                 : GestureDetector(
                     onTap: () => Navigator.of(context).push(
                       MaterialPageRoute(
+                        // passing the data to next screen
                         builder: (context) => Seconscreen(
                           string: result[index]["p_category"].toString(),
                         ),
